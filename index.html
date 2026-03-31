@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Guides - Computer Settings Made Simple</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Poppins:wght@400;600;700&family=Trykker&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-green: #21A63E;
+            --dark-green: #23947B;
+            --charcoal: #5C6F68;
+            --white: #FFFFFF;
+            --light-bg: #F5F7F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PT Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--dark-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: var(--white);
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(180deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Trykker', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* Educational Notice Banner */
+        .notice-banner {
+            background-color: #FFF3CD;
+            border-left: 5px solid #FFC107;
+            padding: 1.5rem;
+            margin: 2rem 5%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .notice-banner i {
+            color: #856404;
+            font-size: 1.5rem;
+        }
+
+        .notice-banner p {
+            color: #856404;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Trykker', serif;
+            font-size: 2.5rem;
+            color: var(--dark-green);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Guide Cards */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .guide-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--dark-green));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(33, 166, 62, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .guide-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .guide-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .guide-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .guide-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .guide-link:hover {
+            gap: 1rem;
+        }
+
+        /* Mission Section */
+        .mission {
+            background-color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .mission::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Trykker', serif;
+            font-size: 8rem;
+            color: var(--primary-green);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission h2 {
+            font-family: 'Trykker', serif;
+            font-size: 2rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .mission p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            text-align: center;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, rgba(33, 166, 62, 0.05) 0%, rgba(35, 148, 123, 0.05) 100%);
+        }
+
+        .social-section h2 {
+            font-family: 'Trykker', serif;
+            font-size: 2rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        .social-section p {
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            min-width: 150px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(33, 166, 62, 0.2);
+        }
+
+        .social-link.instagram:hover {
+            color: #E4405F;
+        }
+
+        .social-link.tiktok:hover {
+            color: #000000;
+        }
+
+        .social-link i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-link span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'PT Sans', sans-serif;
+            opacity: 0.9;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .notice-banner {
+                margin: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            IT Guides
+        </div>
+        <div class="nav-links">
+            <a href="#guides">Guides</a>
+            <a href="#mission">Our Mission</a>
+            <a href="#social">Follow Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Computer Settings Made Simple</h1>
+        <p>Step-by-step video guides to help you master your technology. No jargon, no confusion—just clear, easy-to-follow instructions.</p>
+    </section>
+
+    <!-- Educational Notice -->
+    <div class="notice-banner">
+        <i class="fas fa-graduation-cap"></i>
+        <p><strong>Educational Project Notice:</strong> This is not a real business. This website is a BTEC I.T. project for "Using Social Media in Business" coursework.</p>
+    </div>
+
+    <!-- Guides Section -->
+    <div class="container">
+        <h2 class="section-title" id="guides">Popular Guides</h2>
+        
+        <div class="guides-grid">
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>Wi-Fi Setup</h3>
+                <p>Learn how to connect to wireless networks, troubleshoot connection issues, and secure your home network.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Privacy Settings</h3>
+                <p>Take control of your digital privacy with our comprehensive guides to Windows, macOS, and browser settings.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Display Configuration</h3>
+                <p>Optimize your screen resolution, brightness, night mode, and multi-monitor setups for better productivity.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Notification Management</h3>
+                <p>Master Do Not Disturb, customize app notifications, and take back control of your attention.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-hdd"></i>
+                </div>
+                <h3>Storage Management</h3>
+                <p>Free up disk space, understand cloud storage options, and keep your files organized efficiently.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>User Accounts</h3>
+                <p>Set up family accounts, manage permissions, and learn about administrator vs. standard user rights.</p>
+                <a href="#" class="guide-link">
+                    Watch Guide <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="mission-content">
+            <h2>Our Mission</h2>
+            <p>"We believe that the technology of tomorrow should be understandable for everyone. Our collection of high quality, short and easy to understand videos that are free for everyone."</p>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section" id="social">
+        <h2>Connect With Us</h2>
+        <p>Follow us for daily tips, new guides, and tech news</p>
+        
+        <div class="social-links">
+            <a href="https://site.com/@IT-guides" class="social-link instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>@IT-guides</span>
+            </a>
+            <a href="https://site.com/@IT-guides" class="social-link tiktok" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                <span>@IT-guides</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <i class="fas fa-laptop-code"></i> IT Guides
+        </div>
+        <p>&copy; 2026 IT Guides. A BTEC I.T. Educational Project.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">Created for "Using Social Media in Business" coursework</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for guide cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize cards with hidden state and observe them
+        document.querySelectorAll('.guide-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Add interactive hover effect to notice banner
+        const noticeBanner = document.querySelector('.notice-banner');
+        noticeBanner.addEventListener('mouseenter', () => {
+            noticeBanner.style.transform = 'scale(1.02)';
+            noticeBanner.style.transition = 'transform 0.3s ease';
+        });
+        noticeBanner.addEventListener('mouseleave', () => {
+            noticeBanner.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
